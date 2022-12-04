@@ -25,9 +25,9 @@ const Footer = () => {
 
                                     color="#3ABFEF"
 
-                                    question="When can I register?"
+                                    question="My Wallet is Showing NOT WHITELISTED?"
 
-                                    answer="Registration will open in late summer and close several weeks before hackTAMS. Dates will be announced later."
+                                    answer="You need to make sure you are connected with the same wallet which you provide to us. If you still facing the issue then you need to check if your whitelisted for Phase 1 or 2"
 
                                 ></Question>
 
@@ -35,9 +35,9 @@ const Footer = () => {
 
                                     color="#6270F0"
 
-                                    question="Am I eligible to attend?"
+                                    question="My wallet is not showing on the list?"
 
-                                    answer="To attend as a hacker, you need to be haogiha doihgaodiho sighaoshvxzoixvhozxhv aosifhasif"
+                                    answer="You can select WalletConnect and follow the instructions to connect with your wallet"
 
                                 ></Question>
 
@@ -45,14 +45,49 @@ const Footer = () => {
 
                                     color="#3ABFEF"
 
-                                    question="Another question here?"
+                                    question="What will be the Gas?"
 
-                                    answer="The answer goes here and should be a nice length but not too lengthy as to scare the reader into not wanting to read the rest."
+                                    answer="We are using ERC721A Contract. The Gas will be very cheap and if you mint 1 or 2 NFTs in same Transaction it will almost cost you same Gas as Minting 1 NFT."
+
+                                ></Question>
+        
+                                <Question
+
+                                    color="#3ABFEF"
+
+                                    question="I have Just Minted where is my NFT?"
+
+                                    answer="You can go to opensea.io then connect your wallet with same address and click on profile, here you can see your NFT"
 
                                 ></Question>
 
+        
+                                <Question
 
+                                    color="#3ABFEF"
 
+                                    question="When are you going to reveal the NFT?"
+
+                                    answer="The NFT will be revealed in 7 days"
+
+                                ></Question>
+        
+        
+                                 <Question
+
+                                    color="#3ABFEF"
+
+                                    question="Where can I find Ghostler official Opensea collection?"
+
+                                    answer="Our Official Collection will appear under this Account on opensea https://opensea.io/ghostlers_llc"
+
+                                ></Question>
+        
+        
+        
+        
+        
+        
                             </div>
 
 
