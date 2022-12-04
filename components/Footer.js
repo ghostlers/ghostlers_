@@ -45,7 +45,7 @@ const Footer = () => {
 
                                     color="#3ABFEF"
 
-                                    question="What will be the Gas?"
+                                    question="How much will be the Gas?"
 
                                     answer="We are using ERC721A Contract. The Gas will be very cheap and if you mint 1 or 2 NFTs in same Transaction it will almost cost you same Gas as Minting 1 NFT."
 
@@ -57,7 +57,7 @@ const Footer = () => {
 
                                     question="I have Just Minted where is my NFT?"
 
-                                    answer="You can go to opensea.io then connect your wallet with same address and click on profile, here you can see your NFT"
+                                    answer="You can go to opensea.io then connect your wallet with same address which you have used to mint the NFT and click on profile, here you can see your NFT"
 
                                 ></Question>
 
