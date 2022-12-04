@@ -88,7 +88,7 @@ const Mint: NextPage = () => {
     const mintNftPhase1 = async () => {
 
         try {
-            setStatus("Minting Your ghostlers... Confirm the Mint in Wallet.");
+            setStatus("Minting Your ghostlers... Confirm the Mint in Your Wallet & wait 20 sec for Confirmation.");
             const isWhitelisted = await WL_Mint_PH1([mintAmount]);
             setStatus(`Congratulation! You have successfully Minted Ghostlers. Visit opensea.io to view it. `);
         }
