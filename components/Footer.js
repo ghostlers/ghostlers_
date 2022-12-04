@@ -27,7 +27,7 @@ const Footer = () => {
 
                                     question="My Wallet is Showing NOT WHITELISTED?"
 
-                                    answer="You need to make sure you are connected with the same wallet which you provide to us. If you still facing the issue then you need to check if your whitelisted for Phase 1 or 2"
+                                    answer="You need to make sure you are connected with the same wallet which you provide to us. <br> If you still facing the same issue then you need to check if your whitelisted for Phase 1 or 2"
 
                                 ></Question>
 
