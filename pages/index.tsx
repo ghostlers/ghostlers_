@@ -18,55 +18,40 @@ const Mint: NextPage = () => {
     const address = useAddress();
     const [mintPrice, setMintPrice] = useState(0)
     const [mintAmount, setMintAmount] = useState(1)
-    const [maxMintAmount, setMaxMintAmount] = useState(2)
+    
+   
     const [status, setStatus] = useState("")
     const url = new URL("https://discord.gg/ghostlers/")
 
 
 
-    const { contract } = useContract(signatureDropAddress);
-    const { mutateAsync: WL_Mint_PH2, } = useContractWrite(contract, "WL_Mint_PH2")
 
-    const { data: data2 } = useContractRead(contract, "whitelist_ph2", address)
+
+    const { contract } = useContract(signatureDropAddress);
+    const { mutateAsync: Public_Sale_PH3, } = useContractWrite(contract, "Public_Sale_PH3")
     const totalSupply = useContractRead(contract, "totalSupply")
     const maxSupply = useContractRead(contract, "maxSupply")?.data?.toNumber();
     const maxMintAmountPerTx = useContractRead(contract, "maxMintAmountPerTx")?.data?.toNumber();
     const nftMinted = totalSupply?.data?.toNumber();
-
  
 
 
+    
+
 
     const myFunction = () => {
-        const isWhiteListedforPhase2 = data2;
         if (address) {
-
-            if (isWhiteListedforPhase2) {
-                return (
+           return (
                     <Web3Button
                         contractAddress={signatureDropAddress}
                         action={(contract) => {
-                            mintNftPhase2()
-
+                            mintNftPhase3()
                         }}
                     >
-                        Mint Now (PH-2)
+                        Mint Now (Public Sale)
                     </Web3Button>
                 )
-            }
-            else {
-                return (
-                    <>
-                        <div style={{
-                            fontSize: "1em",
-                            height: "50px", minWidth: "200px"
-                        }} className="pl-4 pr-4  flex items-center justify-center text-brand-background hover:shadow-lg bg-white font-bold rounded-md">Not in Whitelist</div>
-                    </>
-                )
-            }
         }
-
-
         else {
             return (
                 <>
@@ -78,21 +63,22 @@ const Mint: NextPage = () => {
 
 
 
-    const mintNftPhase2 = async () => {
+
+    const mintNftPhase3 = async () => {
         try {
             setStatus("Minting Your ghostlers... Confirm the Mint in your Wallet & Wait 20 Secs for Confirmation!");
-            const isWhitelisted = await WL_Mint_PH2([mintAmount]);
+            const isWhitelisted = await Public_Sale_PH3([mintAmount]);
             setStatus(`Congratulation! You have successfully Minted Ghostlers. Visit opensea.io to view it. `);
             console.info("contract call successs", isWhitelisted?.receipt);
         } catch (e) {
-            ``
+            
             //console.log(err.reason);
             setStatus(e.reason)
             //console.error("contract call failure", err.reason);
-
-
         }
     }
+
+
 
 
 
@@ -142,7 +128,7 @@ const Mint: NextPage = () => {
                         </div>
 
                         <h1 className="font-coiny uppercase text-center items-center mt-4 font-bold text-2xl md:text-4xl bg-gradient-to-br mt-16 from-brand-green to-brand-blue bg-clip-text text-transparent mt-3">
-                            FREE MINT(Phase 2)
+                            FREE MINT(Phase 3)
                         </h1>
 
 
@@ -234,7 +220,7 @@ const Mint: NextPage = () => {
                         </div>
 
 
-                        <span className="font-coiny text-xl uppercase text-center bg-gradient-to-br from-brand-green to-brand-blue bg-clip-text text-transparent items-center mt-2">{status}</span>
+                        <span className="font-coiny text-xl  uppercase text-center bg-gradient-to-br items-center from-brand-green to-brand-blue bg-clip-text text-transparent mt-2">{status}</span>
 
                         {/* Contract Address */}
                         <div className="border-t border-gray-800 flex flex-col items-center mt-2 py-2 w-full">
