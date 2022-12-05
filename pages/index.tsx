@@ -62,7 +62,7 @@ const Mint: NextPage = () => {
                         <div style={{
                             fontSize: "1em",
                             height: "50px", minWidth: "200px"
-                        }} className="pl-4 pr-4  flex items-center justify-center text-brand-background hover:shadow-lg bg-white font-bold rounded-md">Not Whitelisted</div>
+                        }} className="pl-4 pr-4  flex items-center justify-center text-brand-background hover:shadow-lg bg-white font-bold rounded-md">Not in Whitelist</div>
                     </>
                 )
             }
