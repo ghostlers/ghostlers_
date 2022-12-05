@@ -10,7 +10,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 
-const signatureDropAddress = "0xC44BDdcAb5e6587caA1991Faf2390b2D01d06604";
+const signatureDropAddress = "0xfa9F1fD5e1d00F0524B26808D4770ec9eb408b30";
 
 
 const Mint: NextPage = () => {
