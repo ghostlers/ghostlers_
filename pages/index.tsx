@@ -128,7 +128,7 @@ const Mint: NextPage = () => {
                         </div>
 
                         <h1 className="font-coiny uppercase text-center items-center mt-4 font-bold text-2xl md:text-4xl bg-gradient-to-br mt-16 from-brand-green to-brand-blue bg-clip-text text-transparent mt-3">
-                            FREE MINT(Phase 3)
+                            MINTING(Phase 3)
                         </h1>
 
 
