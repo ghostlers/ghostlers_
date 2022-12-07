@@ -1,7 +1,7 @@
 import { ConnectWallet, useAddress, useContract, useContractRead, useContractWrite, Web3Button } from "@thirdweb-dev/react";
 import type { NextPage } from "next";
 
-import { Question } from "../components/faq";
+
 import { useState, useEffect } from 'react'
 
 import { config } from '../dapp.config'
@@ -10,7 +10,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 
-const signatureDropAddress = "0xfa9F1fD5e1d00F0524B26808D4770ec9eb408b30";
+const signatureDropAddress = "0x4a2EEe996CCd0C76bDba75e2770896C19Ae4C9d2";
 
 
 const Mint: NextPage = () => {
@@ -18,40 +18,58 @@ const Mint: NextPage = () => {
     const address = useAddress();
     const [mintPrice, setMintPrice] = useState(0)
     const [mintAmount, setMintAmount] = useState(1)
-    
-   
+    const [maxMintAmount, setMaxMintAmount] = useState(2)
     const [status, setStatus] = useState("")
     const url = new URL("https://discord.gg/ghostlers/")
 
 
 
-
-
     const { contract } = useContract(signatureDropAddress);
-    const { mutateAsync: Public_Sale_PH3, } = useContractWrite(contract, "Public_Sale_PH3")
+
+    const { mutateAsync: WL_Mint_PH1, } = useContractWrite(contract, "WL_Mint_PH1")
+    const { data: data1, isLoading } = useContractRead(contract, "whitelist_ph1", address)
+
     const totalSupply = useContractRead(contract, "totalSupply")
     const maxSupply = useContractRead(contract, "maxSupply")?.data?.toNumber();
     const maxMintAmountPerTx = useContractRead(contract, "maxMintAmountPerTx")?.data?.toNumber();
     const nftMinted = totalSupply?.data?.toNumber();
- 
 
 
-    
 
 
     const myFunction = () => {
+
+        const isWhiteListedforPhase1 = data1;
+
         if (address) {
-           return (
+
+            if (isWhiteListedforPhase1) {
+                return (
                     <Web3Button
                         contractAddress={signatureDropAddress}
                         action={(contract) => {
-                            mintNftPhase3()
+                            mintNftPhase1()
+
                         }}
                     >
-                        Mint Now (Public Sale)
+                        Mint Now (PH-1)
                     </Web3Button>
                 )
+            }
+            else {
+                return (
+                    <>
+                        <div style={{
+                            fontSize: "1em",
+                            height: "50px", minWidth: "200px"
+                        }} className="pl-4 pr-4  flex items-center justify-center text-brand-background hover:shadow-lg bg-white font-bold rounded-md">Not Whitelisted</div>
+                    </>
+                )
+            }
+
         }
+
+
         else {
             return (
                 <>
@@ -64,21 +82,26 @@ const Mint: NextPage = () => {
 
 
 
-    const mintNftPhase3 = async () => {
+
+
+
+    const mintNftPhase1 = async () => {
+
         try {
             setStatus("Minting Your ghostlers... Confirm the Mint in your Wallet & Wait 20 Secs for Confirmation!");
-            const isWhitelisted = await Public_Sale_PH3([mintAmount]);
+            const isWhitelisted = await WL_Mint_PH1([mintAmount]);
             setStatus(`Congratulation! You have successfully Minted Ghostlers. Visit opensea.io to view it. `);
-            console.info("contract call successs", isWhitelisted?.receipt);
-        } catch (e) {
-            
+        }
+
+
+        catch (e) {
+            ``
             //console.log(err.reason);
             setStatus(e.reason)
             //console.error("contract call failure", err.reason);
         }
+
     }
-
-
 
 
 
@@ -128,7 +151,7 @@ const Mint: NextPage = () => {
                         </div>
 
                         <h1 className="font-coiny uppercase text-center items-center mt-4 font-bold text-2xl md:text-4xl bg-gradient-to-br mt-16 from-brand-green to-brand-blue bg-clip-text text-transparent mt-3">
-                            MINTING(Phase 3)
+                            FREE MINT(Phase 1)
                         </h1>
 
 
@@ -220,7 +243,7 @@ const Mint: NextPage = () => {
                         </div>
 
 
-                        <span className="font-coiny text-xl  uppercase text-center bg-gradient-to-br items-center from-brand-green to-brand-blue bg-clip-text text-transparent mt-2">{status}</span>
+                        <span className="font-coiny text-xl  uppercase text-center bg-gradient-to-br from-brand-green to-brand-blue bg-clip-text text-transparent items-center mt-2">{status}</span>
 
                         {/* Contract Address */}
                         <div className="border-t border-gray-800 flex flex-col items-center mt-2 py-2 w-full">
